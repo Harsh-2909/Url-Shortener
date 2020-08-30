@@ -12,7 +12,8 @@ def home(request):
     form = RouterForm(request.POST or None)
     if form.is_valid():
         form.save()
-        messages.success(request, f"URL has been successfully shortened to {BASE_URL}{form.cleaned_data.get('key')}")
+        key = form.cleaned_data.get('key')
+        messages.success(request, f"URL has been successfully shortened to <a href='{BASE_URL}{key}'>{BASE_URL}{key}</a>")
         return redirect('home')
     return render(request, 'router/home.html', {"form": form})
 

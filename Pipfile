@@ -9,6 +9,8 @@ pylint = "*"
 [packages]
 django = "*"
 django-crispy-forms = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"

@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import Route
 from .forms import RouterForm
 from django.views.generic import ListView
+
 # Create your views here.
 def home(request):
     BASE_URL = request.get_raw_uri()
@@ -18,6 +19,11 @@ def home(request):
 def how_to(request):
     # return HttpResponse("<h1>About Page</h1>")
     return render(request, 'router/how_to_use.html')
+
+class URLListView(ListView):
+    model = Route
+    context_object_name = 'urls'
+    paginate_by = 10
 
 def redirector(request, key):
 

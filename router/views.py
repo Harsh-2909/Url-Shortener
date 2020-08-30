@@ -3,16 +3,21 @@ from django.contrib import messages
 from django.http import HttpResponse
 from .models import Route
 from .forms import RouterForm
+from django.views.generic import ListView
 # Create your views here.
-
 def home(request):
+    BASE_URL = request.get_raw_uri()
     # return HttpResponse('Site is working')
     form = RouterForm(request.POST or None)
     if form.is_valid():
         form.save()
-        messages.success(request, f"URL has been successfully shortened to {request.get_raw_uri()}{form.cleaned_data.get('key')}")
+        messages.success(request, f"URL has been successfully shortened to {BASE_URL}{form.cleaned_data.get('key')}")
         return redirect('home')
     return render(request, 'router/home.html', {"form": form})
+
+def how_to(request):
+    # return HttpResponse("<h1>About Page</h1>")
+    return render(request, 'router/how_to_use.html')
 
 def redirector(request, key):
 

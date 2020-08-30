@@ -13,7 +13,7 @@ def home(request):
     if form.is_valid():
         form.save()
         key = form.cleaned_data.get('key')
-        messages.success(request, f"URL has been successfully shortened to <a href='{BASE_URL}{key}'>{BASE_URL}{key}</a>")
+        messages.success(request, f"URL has been successfully shortened to {BASE_URL}{key}")
         return redirect('home')
     return render(request, 'router/home.html', {"form": form})
 

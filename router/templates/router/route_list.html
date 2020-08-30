@@ -4,7 +4,7 @@
     {% for url in urls %}
         <article class="media content-section">
             <div class="media-body">
-                <h5>Shortened Link: <a class="mr-2" target="_blank" href="{{ request.get_host }}/{{ url.key }}">{{ request.get_host }}/{{ url.key }}</a></h5>
+                <h5>Shortened Link: <a class="mr-2" target="_blank" href="https://{{ request.get_host }}/{{ url.key }}">{{ request.get_host }}/{{ url.key }}</a></h5>
                 <div>
                     <h5>Original Link: <a class="mr-2" target="_blank" href="{{ url.original_url }}">{{ url.original_url }}</a></h5>
                 </div>
